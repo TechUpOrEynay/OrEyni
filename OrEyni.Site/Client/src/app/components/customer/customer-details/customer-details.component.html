@@ -1,0 +1,12 @@
+<label>שם פרטי:</label>
+<md-input-container>
+  <input mdInput placeholder="שם פרטי" [value]="customerDetails?.FirstName" (change)="isDirty=true">
+</md-input-container>
+<br/>
+<label>שם משפחה:</label>
+<md-input-container>
+  <input mdInput placeholder="שם משפחה" [value]="customerDetails?.LastName" (change)="isDirty=true">
+</md-input-container>
+
+
+

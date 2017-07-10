@@ -1,0 +1,9 @@
+<div dir="rtl">
+<h2 md-dialog-title>{{data.title}}</h2>
+<md-dialog-content>{{data.text}}</md-dialog-content>
+<md-dialog-actions>
+  <button md-button md-dialog-close>לא</button>
+  <!-- Can optionally provide a result for the closing dialog. -->
+  <button md-button [md-dialog-close]="true">כן</button>
+</md-dialog-actions>
+</div>

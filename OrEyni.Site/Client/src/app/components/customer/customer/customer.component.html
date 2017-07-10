@@ -1,0 +1,15 @@
+
+<h1>
+  {{selectedCustomer?.FullName}}
+  </h1>
+<md-tab-group>
+ 
+  <md-tab label="פרטים" >
+    <h1>פרטים</h1>
+    <app-customer-details [currentCustomer]="selectedCustomer"></app-customer-details>
+  </md-tab>
+  <md-tab label="פעילויות">
+    <h1>פעילויות</h1>
+    <p>...</p>
+  </md-tab>
+</md-tab-group>
