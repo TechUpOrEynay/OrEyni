@@ -1,7 +1,7 @@
-import { Component,  Input } from '@angular/core';
-import {Customer } from '../../../models/customer.type';
-import {CustomersService} from '../../../services/customers.service';
-
+import { Component, Input, ViewChild } from '@angular/core';
+import { Customer } from '../../../models/customer.type';
+import { CustomersService } from '../../../services/customers.service';
+import { CustomerDetailsComponent } from '../customer-details/customer-details.component';
 
 
 @Component({
@@ -9,23 +9,31 @@ import {CustomersService} from '../../../services/customers.service';
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css']
 })
-export class CustomerComponent  {
+export class CustomerComponent {
+  @ViewChild(CustomerDetailsComponent)
+  private customerDetailsComponent: CustomerDetailsComponent;
+
   private _currentCustomer: Customer;
 
-public  selectedCustomer: Customer;
+  public selectedCustomer: Customer;
 
-constructor(private customersService: CustomersService) { }
+  constructor(private customersService: CustomersService) { }
 
 
-get currentCustomer(){ return this._currentCustomer; }
+  get currentCustomer() { return this._currentCustomer; }
 
-@Input()
-set currentCustomer(currentCustomer: Customer)
-{
-  this._currentCustomer = currentCustomer;
-  if (this._currentCustomer && this._currentCustomer.CustomerId) {
-    this.selectedCustomer = this._currentCustomer;
+  @Input()
+  set currentCustomer(currentCustomer: Customer) {
+    this._currentCustomer = currentCustomer;
+    if (this._currentCustomer && this._currentCustomer.CustomerId) {
+      this.selectedCustomer = this._currentCustomer;
+    }
   }
-}
+
+
+
+  tabChanged(event) {
+    this.customerDetailsComponent.saveWithAsk();
+  }
 
 }

@@ -1,12 +1,22 @@
-<label>שם פרטי:</label>
-<md-input-container>
-  <input mdInput placeholder="שם פרטי" [value]="customerDetails?.FirstName" (change)="isDirty=true">
-</md-input-container>
-<br/>
-<label>שם משפחה:</label>
-<md-input-container>
-  <input mdInput placeholder="שם משפחה" [value]="customerDetails?.LastName" (change)="isDirty=true">
-</md-input-container>
+<form #customerDetailsForm="ngForm" *ngIf="customerDetails" (ngSubmit)="customerDetailsForm.form.valid && save()" >
+  <div class="form-group">
+    <label for="firstname">שם פרטי:</label>
+    <md-input-container>
+      <input #fn class="form-control" id="firstname" name="firstname" required mdInput placeholder="שם פרטי" [(ngModel)]="customerDetails.FirstName"
+        (change)="isDirty=true">
+    </md-input-container>
+   <!-- <br>TODO: remove this: {{fn.className}}-->
+  </div>
 
+  <div class="form-group">
+    <label for="lastname">שם משפחה:</label>
+    <md-input-container>
+      <input class="form-control" id="lastname" name="lastname" required mdInput placeholder="שם משפחה" [(ngModel)]="customerDetails.LastName"
+        (change)="isDirty=true">
+    </md-input-container>
+    
+  </div>
 
+  <button [disabled]="!customerDetailsForm.form.valid || !customerDetailsForm.form.dirty" type="submit" class="btn btn-success" >שמירה</button>
 
+</form>
