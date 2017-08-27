@@ -1,0 +1,14 @@
+<!-- <div>
+    <button [routerLink]="['/school']" routerLinkActive="active">מוסדות לימוד</button>
+    <button [routerLink]="['/problem']" routerLinkActive="active">סוגי ליקויים</button>
+    <button [routerLink]="['/user']" routerLinkActive="active">הוספת משתמשים</button>
+    <router-outlet></router-outlet>
+    <button>דוחות</button>
+</div> -->
+<div class="managementDiv">
+    <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a [routerLink]="['/school']">school</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/problem']">problem</a></li>
+    </ul>
+    <router-outlet></router-outlet>
+    <div>

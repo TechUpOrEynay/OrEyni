@@ -1,0 +1,17 @@
+<div class="divSchool">
+    <table>
+        <thead>
+            <tr>
+                <th>שם ליקוי</th>
+                <th>פרטים</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" [(ngModel)]="problem.name" style="border:none"></td>
+                <td><input type="text" [(ngModel)]="problem.details" style="border:none"></td>
+            </tr>
+        </tbody>
+    </table>
+    <button (click)="save()">שמור</button>
+</div>

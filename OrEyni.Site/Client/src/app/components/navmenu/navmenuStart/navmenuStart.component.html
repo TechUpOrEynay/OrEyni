@@ -1,0 +1,19 @@
+<md-toolbar>
+
+    <b>אור עיני - לוגו</b>
+    <div>
+        <button md-button class="btn btn-primary" (click)="login()">כניסה למשתמש רשום</button>
+    </div>
+
+    <md-toolbar-row color="black">
+        <a [routerLink]="['/home']">
+                        <span class='glyphicon glyphicon-home'></span> Home
+                    </a>
+        <a [routerLink]="['/customers']">
+                        <span class='glyphicon glyphicon-cloud'></span> צור קשר
+                    </a>
+        <a [routerLink]="['/customers']">
+                        <span class='glyphicon glyphicon-cloud'></span> אודותינו
+                    </a>
+    </md-toolbar-row>
+</md-toolbar>

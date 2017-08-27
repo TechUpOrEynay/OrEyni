@@ -1,0 +1,60 @@
+<tabset>
+    <tab title="תרומות">
+        <table class="table">
+            <thead class="thead">
+                <tr>
+                    <th class="col-md-1">תאריך</th>
+                    <th class="col-md-1">סכום לתרומה</th>
+                    <th class="col-md-1">צורת תשלום</th>
+                    <th class="col-md-1">תודות</th>
+                    <th class="col-md-1">הערות</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let d of donations">
+                    <td>{{d.donationDate}}</td>
+                    <td>{{d.sum}}</td>
+                    <td>{{d.type}}</td>
+                    <td>{{d.isThank}}</td>
+                    <td>{{d.notes}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input placeholder="Date" type="date" date="dd-MM-yyyy" [(ngModel)]="donation.donationDate" style="border:none">
+                    </td>
+                    <td><input type="number" [(ngModel)]="donation.sum" style="border:none"></td>
+                    <td><input type="text" [(ngModel)]="donation.type" style="border:none"></td>
+                    <td>
+                        <select [(ngModel)]="donation.isThank" style="border:none">
+                                <option [ngValue]="true">כן</option>
+                                <option [ngValue]="false" >לא</option>
+                        </select>
+                    </td>
+                    <td><input type="text" [(ngModel)]="donation.notes" style="border:none"></td>
+                </tr>
+            </tbody>
+        </table>
+    </tab>
+    <tab title="קשר עם התורם">
+        <table>
+            <thead>
+                <tr>
+                    <th>תאריך</th>
+                    <th>פרטים</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dc of donorContacts">
+                    <td>{{dc.dateDonorContact}}</td>
+                    <td>{{dc.detailes}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input placeholder="Date" type="date" date="dd-MM-yyyy" [(ngModel)]="donorContact.dateDonorContact" style="border:none">
+                    </td>
+                    <td><input type="text" [(ngModel)]="donorContact.details" style="border:none"></td>
+                </tr>
+            </tbody>
+        </table>
+    </tab>
+</tabset>

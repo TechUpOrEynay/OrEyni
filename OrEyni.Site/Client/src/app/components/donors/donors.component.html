@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-9">
+        <donation [currentDonor]="selectedDonor"> </donation>
+    </div>
+    <div class="col-md-3">
+        <md-input-container class="autocomplete">
+            <input mdInput placeholder="בחר תורם" [mdAutocomplete]="auto" [formControl]="donorCtrl" [(ngModel)]="selectedDonor">
+        </md-input-container>
+
+        <md-autocomplete #auto="mdAutocomplete" [displayWith]="displayDonor">
+            <md-option *ngFor="let d of donors | async" [value]="d">
+                {{d.fullName}}
+            </md-option>
+        </md-autocomplete>
+        <span class="btn-group">
+                    <!-- <div class="container">
+                        <button class="btn btn-default" (click)=showConfirm()>Show confirm</button>
+                    </div> -->
+        <button md-button class="btn btn-primary" (click)="showEditDialog()">ערוך</button>
+        <button md-button class="btn btn-primary" (click)="deleteDonor()">מחק</button>
+        <button md-button class="btn btn-primary" (click)="showAddDialog()">הוסף</button>
+        <!--https://github.com/ng2-ui/popup-->
+       </span>
+
+    </div>
+</div>
+<div class="col-md-4">
+    <button class="btn btn-primary" (click)="saveDonations">שמור</button></div>
+<!--<select [(ngModel)]="selectedValue">
+       <option *ngFor="let d of donors" [ngValue]="d">{{d.name}}</option>
+    </select>-->
