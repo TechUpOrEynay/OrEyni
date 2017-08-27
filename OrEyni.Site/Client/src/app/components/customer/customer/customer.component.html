@@ -1,8 +1,7 @@
 <!--<h1>
   {{selectedCustomer?.FullName}}
 </h1>-->
-<md-tab-group (selectChange)="tabChanged($event)">
-
+<!-- <md-tab-group (selectChange)="tabChanged($event)">
   <md-tab label="פרטים">
     <h1>פרטים</h1>
     <app-customer-details [currentCustomer]="selectedCustomer"></app-customer-details>
@@ -11,4 +10,38 @@
     <h1>פעילויות</h1>
     <app-customer-activities [currentCustomer]="selectedCustomer"> </app-customer-activities>
   </md-tab>
-</md-tab-group>
+</md-tab-group> -->
+<tabset (onSelect)="tabChanged($event)">
+  <tab title="פרטים" label="פרטים">
+    <label>פרטים</label>
+    <app-customer-details [currentCustomer]="selectedCustomer"></app-customer-details>
+  </tab>
+  <tab title="פעילויות" label="פעילויות">
+    <label>פעילויות</label>
+    <app-customer-activities [currentCustomer]="selectedCustomer"> </app-customer-activities>
+  </tab>
+  <tab title="תהליך">
+    <label>תהליך</label>
+    <app-customer-process [currentCustomer]="selectedCustomer"> </app-customer-process> -->
+    <!-- <a [routerLink]="['/process']">תהליך</a> -->
+  </tab>
+  <tab title="משפחה">
+    <label>משפחה</label>
+  </tab>
+</tabset>
+
+<!-- <nav class="navbar navbar-default" style="direction:rtl">
+  <div class="container">
+    <ul class="nav navbar-nav">
+
+      <li class="tab col s3" routerLinkActive="active"><a href="#test1" (click)="clicked(1)">Test 1</a></li>
+
+      <li class="tab col s3" routerLinkActive="active"><a [routerLink]="['/process']">תהליך</a></li>
+
+      <li class="tab col s3" routerLinkActive="active"><a [routerLink]="['/process']">תהליך</a></li>
+
+      <li class="tab col s3" routerLinkActive="active"><a href="#test4">Test 4</a></li>
+
+    </ul>
+  </div>
+</nav> -->

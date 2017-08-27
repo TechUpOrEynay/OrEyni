@@ -2,7 +2,7 @@ import { Component, Input, ViewChild } from '@angular/core';
 import { Customer } from '../../../models/customer.type';
 import { CustomersService } from '../../../services/customers.service';
 import { CustomerDetailsComponent } from '../customer-details/customer-details.component';
-
+import { TabsModule } from "ng2-tabs";
 
 @Component({
   selector: 'app-customer',
