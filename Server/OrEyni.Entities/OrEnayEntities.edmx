@@ -1,0 +1,1320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OrEnayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="500" />
+          <Property Name="ActivityDate" Type="datetime" />
+          <Property Name="Adress" Type="varchar" MaxLength="30" />
+          <Property Name="City" Type="int" />
+          <Property Name="PlaceName" Type="varchar" MaxLength="50" />
+          <Property Name="Cost" Type="float" />
+          <Property Name="FreeCost" Type="bit" />
+          <Property Name="MaxCount" Type="int" />
+          <Property Name="IsShow" Type="bit" />
+        </EntityType>
+        <EntityType Name="ActivityImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActivityID" Type="int" />
+          <Property Name="Image" Type="varchar" MaxLength="200" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ActivityOption">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ActivityID" Type="int" />
+          <Property Name="ColumnID" Type="int" />
+          <Property Name="Value" Type="varchar" MaxLength="50" />
+          <Property Name="Operator" Type="int" />
+        </EntityType>
+        <EntityType Name="ActivityRegister">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActivityID" Type="int" />
+          <Property Name="ChildID" Type="int" />
+          <Property Name="SumPay" Type="float" />
+        </EntityType>
+        <EntityType Name="Child">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FamilyChildID" Type="int" />
+          <Property Name="FirstName" Type="varchar" MaxLength="25" />
+          <Property Name="TZ" Type="varchar" MaxLength="25" />
+          <Property Name="HMOID" Type="int" />
+          <Property Name="SchoolID" Type="int" />
+          <Property Name="ProblemID" Type="int" />
+          <Property Name="Notes" Type="varchar" MaxLength="500" />
+          <Property Name="LastName" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Donation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DonorID" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Sum" Type="float" />
+          <Property Name="Type" Type="varchar" MaxLength="25" />
+          <Property Name="IsThank" Type="bit" />
+          <Property Name="Notes" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Donor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="25" />
+          <Property Name="LastName" Type="varchar" MaxLength="25" />
+          <Property Name="FullAdress" Type="varchar" MaxLength="200" />
+          <Property Name="Details" Type="varchar" MaxLength="200" />
+          <Property Name="Phone" Type="varchar" MaxLength="25" />
+          <Property Name="E_mail" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="DonorContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DonorID" Type="int" />
+          <Property Name="Details" Type="varchar" MaxLength="25" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
+        <EntityType Name="Family">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Adress" Type="varchar" MaxLength="25" />
+          <Property Name="Zip" Type="varchar" MaxLength="25" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="Phone" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="FamilyChild">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FamilyId" Type="int" />
+          <Property Name="FirstName" Type="varchar" MaxLength="20" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="IsVisionImpaired" Type="bit" />
+        </EntityType>
+        <EntityType Name="HMO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="MaritalStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FamilyID" Type="int" />
+          <Property Name="FirstName" Type="varchar" MaxLength="25" />
+          <Property Name="Occupation" Type="varchar" MaxLength="25" />
+          <Property Name="IsMother" Type="bit" />
+          <Property Name="Email" Type="varchar" MaxLength="65" />
+          <Property Name="Phone" Type="varchar" MaxLength="25" />
+          <Property Name="Notes" Type="varchar" MaxLength="500" />
+          <Property Name="IsVisionImpaired" Type="bit" />
+        </EntityType>
+        <EntityType Name="Problem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Details" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="ChildID" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="ProcessTypeID" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="AdvisingName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProcessType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="25" />
+          <Property Name="CityID" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="25" />
+          <Property Name="Password" Type="varchar" MaxLength="25" />
+          <Property Name="IsAdmin" Type="bit" />
+        </EntityType>
+        <Association Name="FK__Activity__City__4316F928">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ActivityI__Activ__440B1D61">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="0..1" />
+          <End Role="ActivityImages" Type="Self.ActivityImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityImages">
+              <PropertyRef Name="ActivityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ActivityR__Activ__44FF419A">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="0..1" />
+          <End Role="ActivityRegister" Type="Self.ActivityRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityRegister">
+              <PropertyRef Name="ActivityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ActivityR__Child__45F365D3">
+          <End Role="Child" Type="Self.Child" Multiplicity="0..1" />
+          <End Role="ActivityRegister" Type="Self.ActivityRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Child">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityRegister">
+              <PropertyRef Name="ChildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Child__FamilyChi__46E78A0C">
+          <End Role="Family" Type="Self.Family" Multiplicity="0..1" />
+          <End Role="Child" Type="Self.Child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Family">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="FamilyChildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Child__HMOID__47DBAE45">
+          <End Role="HMO" Type="Self.HMO" Multiplicity="0..1" />
+          <End Role="Child" Type="Self.Child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HMO">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="HMOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Child__ProblemID__48CFD27E">
+          <End Role="Problem" Type="Self.Problem" Multiplicity="0..1" />
+          <End Role="Child" Type="Self.Child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Problem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="ProblemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Child__SchoolID__49C3F6B7">
+          <End Role="School" Type="Self.School" Multiplicity="0..1" />
+          <End Role="Child" Type="Self.Child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="SchoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Donation__DonorI__4AB81AF0">
+          <End Role="Donor" Type="Self.Donor" Multiplicity="0..1" />
+          <End Role="Donation" Type="Self.Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="DonorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DonorCont__Donor__4BAC3F29">
+          <End Role="Donor" Type="Self.Donor" Multiplicity="0..1" />
+          <End Role="DonorContact" Type="Self.DonorContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DonorContact">
+              <PropertyRef Name="DonorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Family__CityID__4CA06362">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Family" Type="Self.Family" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Family">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FamilyChi__Famil__4D94879B">
+          <End Role="Family" Type="Self.Family" Multiplicity="0..1" />
+          <End Role="FamilyChild" Type="Self.FamilyChild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Family">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FamilyChild">
+              <PropertyRef Name="FamilyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Parent__FamilyID__4E88ABD4">
+          <End Role="Family" Type="Self.Family" Multiplicity="0..1" />
+          <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Family">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Parent">
+              <PropertyRef Name="FamilyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__School__CityID__4F7CD00D">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="School" Type="Self.School" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="School">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityOption_Activity">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="0..1" />
+          <End Role="ActivityOption" Type="Self.ActivityOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityOption">
+              <PropertyRef Name="ActivityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donation_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Donation" Type="Self.Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_Child">
+          <End Role="Child" Type="Self.Child" Multiplicity="0..1" />
+          <End Role="Process" Type="Self.Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Child">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Process">
+              <PropertyRef Name="ChildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_Parent">
+          <End Role="Parent" Type="Self.Parent" Multiplicity="0..1" />
+          <End Role="Process" Type="Self.Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parent">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Process">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_ProcessType">
+          <End Role="ProcessType" Type="Self.ProcessType" Multiplicity="0..1" />
+          <End Role="Process" Type="Self.Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcessType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Process">
+              <PropertyRef Name="ProcessTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OrEnayModelStoreContainer">
+          <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActivityImages" EntityType="Self.ActivityImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActivityOption" EntityType="Self.ActivityOption" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActivityRegister" EntityType="Self.ActivityRegister" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Child" EntityType="Self.Child" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donor" EntityType="Self.Donor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DonorContact" EntityType="Self.DonorContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Family" EntityType="Self.Family" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FamilyChild" EntityType="Self.FamilyChild" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HMO" EntityType="Self.HMO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaritalStatus" EntityType="Self.MaritalStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parent" EntityType="Self.Parent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Problem" EntityType="Self.Problem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Process" EntityType="Self.Process" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcessType" EntityType="Self.ProcessType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="School" EntityType="Self.School" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Activity__City__4316F928" Association="Self.FK__Activity__City__4316F928">
+            <End Role="City" EntitySet="City" />
+            <End Role="Activity" EntitySet="Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ActivityI__Activ__440B1D61" Association="Self.FK__ActivityI__Activ__440B1D61">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="ActivityImages" EntitySet="ActivityImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ActivityR__Activ__44FF419A" Association="Self.FK__ActivityR__Activ__44FF419A">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="ActivityRegister" EntitySet="ActivityRegister" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ActivityR__Child__45F365D3" Association="Self.FK__ActivityR__Child__45F365D3">
+            <End Role="Child" EntitySet="Child" />
+            <End Role="ActivityRegister" EntitySet="ActivityRegister" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Child__FamilyChi__46E78A0C" Association="Self.FK__Child__FamilyChi__46E78A0C">
+            <End Role="Family" EntitySet="Family" />
+            <End Role="Child" EntitySet="Child" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Child__HMOID__47DBAE45" Association="Self.FK__Child__HMOID__47DBAE45">
+            <End Role="HMO" EntitySet="HMO" />
+            <End Role="Child" EntitySet="Child" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Child__ProblemID__48CFD27E" Association="Self.FK__Child__ProblemID__48CFD27E">
+            <End Role="Problem" EntitySet="Problem" />
+            <End Role="Child" EntitySet="Child" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Child__SchoolID__49C3F6B7" Association="Self.FK__Child__SchoolID__49C3F6B7">
+            <End Role="School" EntitySet="School" />
+            <End Role="Child" EntitySet="Child" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donation__DonorI__4AB81AF0" Association="Self.FK__Donation__DonorI__4AB81AF0">
+            <End Role="Donor" EntitySet="Donor" />
+            <End Role="Donation" EntitySet="Donation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DonorCont__Donor__4BAC3F29" Association="Self.FK__DonorCont__Donor__4BAC3F29">
+            <End Role="Donor" EntitySet="Donor" />
+            <End Role="DonorContact" EntitySet="DonorContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Family__CityID__4CA06362" Association="Self.FK__Family__CityID__4CA06362">
+            <End Role="City" EntitySet="City" />
+            <End Role="Family" EntitySet="Family" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FamilyChi__Famil__4D94879B" Association="Self.FK__FamilyChi__Famil__4D94879B">
+            <End Role="Family" EntitySet="Family" />
+            <End Role="FamilyChild" EntitySet="FamilyChild" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Parent__FamilyID__4E88ABD4" Association="Self.FK__Parent__FamilyID__4E88ABD4">
+            <End Role="Family" EntitySet="Family" />
+            <End Role="Parent" EntitySet="Parent" />
+          </AssociationSet>
+          <AssociationSet Name="FK__School__CityID__4F7CD00D" Association="Self.FK__School__CityID__4F7CD00D">
+            <End Role="City" EntitySet="City" />
+            <End Role="School" EntitySet="School" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityOption_Activity" Association="Self.FK_ActivityOption_Activity">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="ActivityOption" EntitySet="ActivityOption" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donation_Users" Association="Self.FK_Donation_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Donation" EntitySet="Donation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_Child" Association="Self.FK_Process_Child">
+            <End Role="Child" EntitySet="Child" />
+            <End Role="Process" EntitySet="Process" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_Parent" Association="Self.FK_Process_Parent">
+            <End Role="Parent" EntitySet="Parent" />
+            <End Role="Process" EntitySet="Process" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_ProcessType" Association="Self.FK_Process_ProcessType">
+            <End Role="ProcessType" EntitySet="ProcessType" />
+            <End Role="Process" EntitySet="Process" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OrEnayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ActivityDate" Type="DateTime" Precision="3" />
+          <Property Name="Adress" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="PlaceName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cost" Type="Double" />
+          <Property Name="FreeCost" Type="Boolean" />
+          <Property Name="MaxCount" Type="Int32" />
+          <Property Name="IsShow" Type="Boolean" />
+          </EntityType>
+        <EntityType Name="ActivityImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivityID" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ActivityOption">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ActivityID" Type="Int32" />
+          <Property Name="ColumnID" Type="Int32" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Operator" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ActivityRegister">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivityID" Type="Int32" />
+          <Property Name="ChildID" Type="Int32" />
+          <Property Name="SumPay" Type="Double" />
+        </EntityType>
+        <EntityType Name="Child">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FamilyChildID" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="TZ" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="HMOID" Type="Int32" />
+          <Property Name="SchoolID" Type="Int32" />
+          <Property Name="ProblemID" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          </EntityType>
+        <EntityType Name="Donation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DonorID" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Sum" Type="Double" />
+          <Property Name="Type" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IsThank" Type="Boolean" />
+          <Property Name="Notes" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Donor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="FullAdress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Details" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          </EntityType>
+        <EntityType Name="DonorContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DonorID" Type="Int32" />
+          <Property Name="Details" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Family">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CityID" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          </EntityType>
+        <EntityType Name="FamilyChild">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FamilyId" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="IsVisionImpaired" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="HMO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MaritalStatu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FamilyID" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Occupation" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IsMother" Type="Boolean" />
+          <Property Name="Email" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsVisionImpaired" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Problem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Details" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="ChildID" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="ProcessTypeID" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AdvisingName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          </EntityType>
+        <EntityType Name="ProcessType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CityID" Type="Int32" />
+          </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IsAdmin" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK__Activity__City__4316F928">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ActivityI__Activ__440B1D61">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="0..1" />
+          <End Role="ActivityImages" Type="Self.ActivityImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityImages">
+              <PropertyRef Name="ActivityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ActivityR__Activ__44FF419A">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="0..1" />
+          <End Role="ActivityRegister" Type="Self.ActivityRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityRegister">
+              <PropertyRef Name="ActivityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityOption_Activity">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="0..1" />
+          <End Role="ActivityOption" Type="Self.ActivityOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityOption">
+              <PropertyRef Name="ActivityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ActivityR__Child__45F365D3">
+          <End Role="Child" Type="Self.Child" Multiplicity="0..1" />
+          <End Role="ActivityRegister" Type="Self.ActivityRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Child">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityRegister">
+              <PropertyRef Name="ChildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Child__FamilyChi__46E78A0C">
+          <End Role="Family" Type="Self.Family" Multiplicity="0..1" />
+          <End Role="Child" Type="Self.Child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Family">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="FamilyChildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Child__HMOID__47DBAE45">
+          <End Role="HMO" Type="Self.HMO" Multiplicity="0..1" />
+          <End Role="Child" Type="Self.Child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HMO">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="HMOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Child__ProblemID__48CFD27E">
+          <End Role="Problem" Type="Self.Problem" Multiplicity="0..1" />
+          <End Role="Child" Type="Self.Child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Problem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="ProblemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Child__SchoolID__49C3F6B7">
+          <End Role="School" Type="Self.School" Multiplicity="0..1" />
+          <End Role="Child" Type="Self.Child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="SchoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_Child">
+          <End Role="Child" Type="Self.Child" Multiplicity="0..1" />
+          <End Role="Process" Type="Self.Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Child">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Process">
+              <PropertyRef Name="ChildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Family__CityID__4CA06362">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Family" Type="Self.Family" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Family">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__School__CityID__4F7CD00D">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="School" Type="Self.School" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="School">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Donation__DonorI__4AB81AF0">
+          <End Role="Donor" Type="Self.Donor" Multiplicity="0..1" />
+          <End Role="Donation" Type="Self.Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="DonorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donation_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Donation" Type="Self.Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DonorCont__Donor__4BAC3F29">
+          <End Role="Donor" Type="Self.Donor" Multiplicity="0..1" />
+          <End Role="DonorContact" Type="Self.DonorContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DonorContact">
+              <PropertyRef Name="DonorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FamilyChi__Famil__4D94879B">
+          <End Role="Family" Type="Self.Family" Multiplicity="0..1" />
+          <End Role="FamilyChild" Type="Self.FamilyChild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Family">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FamilyChild">
+              <PropertyRef Name="FamilyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Parent__FamilyID__4E88ABD4">
+          <End Role="Family" Type="Self.Family" Multiplicity="0..1" />
+          <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Family">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Parent">
+              <PropertyRef Name="FamilyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_Parent">
+          <End Role="Parent" Type="Self.Parent" Multiplicity="0..1" />
+          <End Role="Process" Type="Self.Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parent">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Process">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_ProcessType">
+          <End Role="ProcessType" Type="Self.ProcessType" Multiplicity="0..1" />
+          <End Role="Process" Type="Self.Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcessType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Process">
+              <PropertyRef Name="ProcessTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OrEnayEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Activities" EntityType="Self.Activity" />
+          <EntitySet Name="ActivityImages" EntityType="Self.ActivityImage" />
+          <EntitySet Name="ActivityOptions" EntityType="Self.ActivityOption" />
+          <EntitySet Name="ActivityRegisters" EntityType="Self.ActivityRegister" />
+          <EntitySet Name="Children" EntityType="Self.Child" />
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="Donations" EntityType="Self.Donation" />
+          <EntitySet Name="Donors" EntityType="Self.Donor" />
+          <EntitySet Name="DonorContacts" EntityType="Self.DonorContact" />
+          <EntitySet Name="Families" EntityType="Self.Family" />
+          <EntitySet Name="FamilyChilds" EntityType="Self.FamilyChild" />
+          <EntitySet Name="HMOes" EntityType="Self.HMO" />
+          <EntitySet Name="MaritalStatus" EntityType="Self.MaritalStatu" />
+          <EntitySet Name="Parents" EntityType="Self.Parent" />
+          <EntitySet Name="Problems" EntityType="Self.Problem" />
+          <EntitySet Name="Processes" EntityType="Self.Process" />
+          <EntitySet Name="ProcessTypes" EntityType="Self.ProcessType" />
+          <EntitySet Name="Schools" EntityType="Self.School" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Activity__City__4316F928" Association="Self.FK__Activity__City__4316F928">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Activity" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ActivityI__Activ__440B1D61" Association="Self.FK__ActivityI__Activ__440B1D61">
+            <End Role="Activity" EntitySet="Activities" />
+            <End Role="ActivityImages" EntitySet="ActivityImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ActivityR__Activ__44FF419A" Association="Self.FK__ActivityR__Activ__44FF419A">
+            <End Role="Activity" EntitySet="Activities" />
+            <End Role="ActivityRegister" EntitySet="ActivityRegisters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityOption_Activity" Association="Self.FK_ActivityOption_Activity">
+            <End Role="Activity" EntitySet="Activities" />
+            <End Role="ActivityOption" EntitySet="ActivityOptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ActivityR__Child__45F365D3" Association="Self.FK__ActivityR__Child__45F365D3">
+            <End Role="Child" EntitySet="Children" />
+            <End Role="ActivityRegister" EntitySet="ActivityRegisters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Child__FamilyChi__46E78A0C" Association="Self.FK__Child__FamilyChi__46E78A0C">
+            <End Role="Family" EntitySet="Families" />
+            <End Role="Child" EntitySet="Children" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Child__HMOID__47DBAE45" Association="Self.FK__Child__HMOID__47DBAE45">
+            <End Role="HMO" EntitySet="HMOes" />
+            <End Role="Child" EntitySet="Children" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Child__ProblemID__48CFD27E" Association="Self.FK__Child__ProblemID__48CFD27E">
+            <End Role="Problem" EntitySet="Problems" />
+            <End Role="Child" EntitySet="Children" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Child__SchoolID__49C3F6B7" Association="Self.FK__Child__SchoolID__49C3F6B7">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="Child" EntitySet="Children" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_Child" Association="Self.FK_Process_Child">
+            <End Role="Child" EntitySet="Children" />
+            <End Role="Process" EntitySet="Processes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Family__CityID__4CA06362" Association="Self.FK__Family__CityID__4CA06362">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Family" EntitySet="Families" />
+          </AssociationSet>
+          <AssociationSet Name="FK__School__CityID__4F7CD00D" Association="Self.FK__School__CityID__4F7CD00D">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="School" EntitySet="Schools" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donation__DonorI__4AB81AF0" Association="Self.FK__Donation__DonorI__4AB81AF0">
+            <End Role="Donor" EntitySet="Donors" />
+            <End Role="Donation" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donation_Users" Association="Self.FK_Donation_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Donation" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DonorCont__Donor__4BAC3F29" Association="Self.FK__DonorCont__Donor__4BAC3F29">
+            <End Role="Donor" EntitySet="Donors" />
+            <End Role="DonorContact" EntitySet="DonorContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FamilyChi__Famil__4D94879B" Association="Self.FK__FamilyChi__Famil__4D94879B">
+            <End Role="Family" EntitySet="Families" />
+            <End Role="FamilyChild" EntitySet="FamilyChilds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Parent__FamilyID__4E88ABD4" Association="Self.FK__Parent__FamilyID__4E88ABD4">
+            <End Role="Family" EntitySet="Families" />
+            <End Role="Parent" EntitySet="Parents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_Parent" Association="Self.FK_Process_Parent">
+            <End Role="Parent" EntitySet="Parents" />
+            <End Role="Process" EntitySet="Processes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_ProcessType" Association="Self.FK_Process_ProcessType">
+            <End Role="ProcessType" EntitySet="ProcessTypes" />
+            <End Role="Process" EntitySet="Processes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OrEnayModelStoreContainer" CdmEntityContainer="OrEnayEntities">
+          <EntitySetMapping Name="Activities">
+            <EntityTypeMapping TypeName="OrEnayModel.Activity">
+              <MappingFragment StoreEntitySet="Activity">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="ActivityDate" ColumnName="ActivityDate" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PlaceName" ColumnName="PlaceName" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="FreeCost" ColumnName="FreeCost" />
+                <ScalarProperty Name="MaxCount" ColumnName="MaxCount" />
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityImages">
+            <EntityTypeMapping TypeName="OrEnayModel.ActivityImage">
+              <MappingFragment StoreEntitySet="ActivityImages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityOptions">
+            <EntityTypeMapping TypeName="OrEnayModel.ActivityOption">
+              <MappingFragment StoreEntitySet="ActivityOption">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="ColumnID" ColumnName="ColumnID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityRegisters">
+            <EntityTypeMapping TypeName="OrEnayModel.ActivityRegister">
+              <MappingFragment StoreEntitySet="ActivityRegister">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="ChildID" ColumnName="ChildID" />
+                <ScalarProperty Name="SumPay" ColumnName="SumPay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Children">
+            <EntityTypeMapping TypeName="OrEnayModel.Child">
+              <MappingFragment StoreEntitySet="Child">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FamilyChildID" ColumnName="FamilyChildID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="TZ" ColumnName="TZ" />
+                <ScalarProperty Name="HMOID" ColumnName="HMOID" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="ProblemID" ColumnName="ProblemID" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="OrEnayModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donations">
+            <EntityTypeMapping TypeName="OrEnayModel.Donation">
+              <MappingFragment StoreEntitySet="Donation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DonorID" ColumnName="DonorID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IsThank" ColumnName="IsThank" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donors">
+            <EntityTypeMapping TypeName="OrEnayModel.Donor">
+              <MappingFragment StoreEntitySet="Donor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FullAdress" ColumnName="FullAdress" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="E_mail" ColumnName="E_mail" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DonorContacts">
+            <EntityTypeMapping TypeName="OrEnayModel.DonorContact">
+              <MappingFragment StoreEntitySet="DonorContact">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DonorID" ColumnName="DonorID" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Families">
+            <EntityTypeMapping TypeName="OrEnayModel.Family">
+              <MappingFragment StoreEntitySet="Family">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamilyChilds">
+            <EntityTypeMapping TypeName="OrEnayModel.FamilyChild">
+              <MappingFragment StoreEntitySet="FamilyChild">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FamilyId" ColumnName="FamilyId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="IsVisionImpaired" ColumnName="IsVisionImpaired" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HMOes">
+            <EntityTypeMapping TypeName="OrEnayModel.HMO">
+              <MappingFragment StoreEntitySet="HMO">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaritalStatus">
+            <EntityTypeMapping TypeName="OrEnayModel.MaritalStatu">
+              <MappingFragment StoreEntitySet="MaritalStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parents">
+            <EntityTypeMapping TypeName="OrEnayModel.Parent">
+              <MappingFragment StoreEntitySet="Parent">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FamilyID" ColumnName="FamilyID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="IsMother" ColumnName="IsMother" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="IsVisionImpaired" ColumnName="IsVisionImpaired" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Problems">
+            <EntityTypeMapping TypeName="OrEnayModel.Problem">
+              <MappingFragment StoreEntitySet="Problem">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Processes">
+            <EntityTypeMapping TypeName="OrEnayModel.Process">
+              <MappingFragment StoreEntitySet="Process">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="ChildID" ColumnName="ChildID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ProcessTypeID" ColumnName="ProcessTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AdvisingName" ColumnName="AdvisingName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcessTypes">
+            <EntityTypeMapping TypeName="OrEnayModel.ProcessType">
+              <MappingFragment StoreEntitySet="ProcessType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schools">
+            <EntityTypeMapping TypeName="OrEnayModel.School">
+              <MappingFragment StoreEntitySet="School">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="OrEnayModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="OrEnayModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

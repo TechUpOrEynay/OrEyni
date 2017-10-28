@@ -2,8 +2,8 @@
 
     <b>אור עיני - לוגו</b>
     <div>
-        <b>ישראל ישראלי</b>
-        <button style="text-align:right">צא </button>
+        <b>{{user.userName}}</b>
+        <button style="text-align:right" (click)="logOut()">צא </button>
     </div>
 
     <md-toolbar-row color="black">
@@ -23,23 +23,22 @@
                         <span class='glyphicon glyphicon-cloud'></span> City Weather
                     </a>-->
         <a [routerLink]="['/customers']">
-                        <span class='glyphicon glyphicon-cloud'></span> צור קשר
-                    </a>
-        <a [routerLink]="['/customers']">
-                        <span class='glyphicon glyphicon-cloud'></span> פעילויות
-                    </a>
-        <a [routerLink]="['/managementOrEnay']">
-                        <span class='glyphicon glyphicon-cloud'></span> ניהול
-                    </a>
-        <a [routerLink]="['/customers']">
                         <span class='glyphicon glyphicon-cloud'></span> אודותינו
+                    </a>
+        <a [routerLink]="['/customers']">
+                        <span class='glyphicon glyphicon-cloud'></span> צור קשר
                     </a>
         <a [routerLink]="['/customers']">
                         <span class='glyphicon glyphicon-cloud'></span> לקוחות
                     </a>
+        <a [routerLink]="['/customers']">
+                        <span class='glyphicon glyphicon-cloud'></span> פעילויות
+                   </a>
         <a [routerLink]="['/donors']">
                         <span class='glyphicon glyphicon-cloud'></span> תורמים
+                    </a> 
+       <a [routerLink]="['/managementOrEnay']">
+                        <span class='glyphicon glyphicon-cloud'></span> ניהול
                     </a>
-
     </md-toolbar-row>
 </md-toolbar>

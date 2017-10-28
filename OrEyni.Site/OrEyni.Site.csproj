@@ -14,8 +14,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ayellet.Site</RootNamespace>
-    <AssemblyName>Ayellet.Site</AssemblyName>
+    <RootNamespace>OrEnay.Site</RootNamespace>
+    <AssemblyName>OrEnay.Site</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -27,6 +27,8 @@
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -191,10 +193,14 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DonorsController.cs" />
+    <Compile Include="Controllers\CustomersController2.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Controllers\SampleDataController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\WeatherController.cs" />
     <Compile Include="Global.asax.cs">
@@ -239,7 +245,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -248,7 +256,9 @@
     </Content>
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\Site.css" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -276,11 +286,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Server\OrEyni.Bl\OrEyni.Bl.csproj">
       <Project>{426e98e4-53e5-4545-9180-856196b73390}</Project>
-      <Name>Ayellet.Bl</Name>
+      <Name>OrEyni.Bl</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Server\OrEyni.Model\OrEyni.Model.csproj">
-      <Project>{dc471b31-16f8-450c-b72b-f1390fd6cf57}</Project>
-      <Name>Ayellet.Model</Name>
+    <ProjectReference Include="..\Server\OrEyni.Entities\OrEyni.Entities.csproj">
+      <Project>{ac3a4fff-f5f0-42b4-b043-bb0be3edf192}</Project>
+      <Name>OrEyni.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

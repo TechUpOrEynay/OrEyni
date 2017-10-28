@@ -28,7 +28,7 @@ import { Donor } from '../../../models/donor.type';
     templateUrl: 'donors.component.addDialog.html',
     styleUrls: ['donors.component.addDialog.css'],
 })
-export class AddDialogComponent extends DialogComponent<null, boolean> {
+export class AddDialogComponent extends DialogComponent<null, Donor> {
     donor: Donor;
     constructor(dialogService: DialogService, private donorService: DonorsService) {
         super(dialogService);
@@ -39,11 +39,9 @@ export class AddDialogComponent extends DialogComponent<null, boolean> {
     }
     confirm() {
         this.close();
-        this.donorService.createNewDonor(this.donor).subscribe(x => {
-            if (x == true)
-                this.result = true;
-            this.result = false;
-        });
+        if(this.donor.firstName && this.donor.lastName)
+          this.result = this.donor;
+        else alert("שם פרטי ושם משפחה הם שדות חובה");
     }
     cancel() {
         this.close();

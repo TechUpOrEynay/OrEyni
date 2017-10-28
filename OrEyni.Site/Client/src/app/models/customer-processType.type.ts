@@ -1,6 +1,8 @@
 export class CustomerProcessType {
+    id: number;
+    description: string;
     constructor(
-        idProessType: number,
+        id: number,
         description: string)
     { }
 }

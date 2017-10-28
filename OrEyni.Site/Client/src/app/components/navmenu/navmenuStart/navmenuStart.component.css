@@ -1,8 +1,16 @@
 :host >>> md-toolbar-row {
   justify-content: space-between;
-  display:flex;
+  display:inline-block;
+  width: 75%;
+  box-sizing: border-box;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+ 
 }
-
+a{
+    margin-left: 10%;
+}
 li .glyphicon {
     margin-right: 10px;
 }
@@ -23,7 +31,14 @@ li.link-active a:focus {
     right: 0;
     z-index: 1;
 }
-
+.mat-toolbar .mat-toolbar-row{
+    justify-content: space-between;   
+    width: 25%;
+}
+.mat-button{
+    position: absolute;
+    right: 85%;
+}
 @media (min-width: 768px) {
     /* On small screens, convert the nav menu to a vertical sidebar */
     .main-nav {

@@ -1,7 +1,7 @@
 ﻿export class Donation {
-    donationID: number;
+    id: number;
     donorID: number;
-    donationDate: Date;
+    date: Date;
     sum: number;
     type: string;
     isThank: boolean;

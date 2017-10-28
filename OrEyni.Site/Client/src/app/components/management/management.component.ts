@@ -3,6 +3,7 @@ import { ManagementProblem } from '../../models/management.problem.type'
 import { ManagementSchool } from '../../models/management.school.type'
 import { ManagementUsers } from '../../models/management.users.type'
 import { ManagementService } from '../../services/management.service';
+
 import { City } from '../../models/city.type'
 @Component({
     selector: 'management',
@@ -19,6 +20,6 @@ export class ManagementComponent implements OnInit {
     cities: City[];
     constructor(private managmentService: ManagementService) { }
     ngOnInit() {
-        this.managmentService.getCities().then(x => { this.cities = x; })
+        // this.managmentService.getCities().then(x => { this.cities = x; })
     }
 }

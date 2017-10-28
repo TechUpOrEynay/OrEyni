@@ -1,9 +1,15 @@
 ﻿export class Customer {
-    CustomerId: number;
-    FullName: string;
-
-    constructor(customerId: number,fullName: string) {
-        this.CustomerId=customerId;
-        this.FullName=fullName;
+    id?:number;
+    familyChildID: number;
+    firstName: string;
+    lastName:string;
+    fullName: string;
+    tz:string;
+    hmoid:number;
+    schoolID:number;
+    problemID:number;
+    notes:string
+    constructor(id?:number ,familyChildID?: number,firstName?: string,lastName?:string,fullName?: string, tz?:string,
+        hmoid?:number, schoolID?:number, problemID?:number, notes?:string) {   
     }
 }

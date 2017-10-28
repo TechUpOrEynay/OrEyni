@@ -6,6 +6,10 @@ import { MdDialog, MdDialogRef, MdDialogConfig, MD_DIALOG_DATA } from '@angular/
 import { EditDialogComponent } from '../dialogs/editDialog/donors.component.editDialog';
 import { AddDialogComponent } from '../dialogs/addDialog/donors.component.addDialog';
 import { DialogService } from "ng2-bootstrap-modal";
+import {DonationComponent} from '../donation/donation.component';
+
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/map';
 @Component({
     selector: 'donors',
     templateUrl: './donors.component.html',
@@ -15,25 +19,15 @@ export class DonorsComponent implements OnInit {
     donorCtrl: FormControl;
     filteredDonors: any;
     public selectedDonor: Donor;
-    donors: Donor[];
-    // config: MdDialogConfig = {
-    //     disableClose: false,
-    //     hasBackdrop: true,
-    //     backdropClass: '',
-    //     width: '28%',
-    //     height: '80%',
-    //     position: {
-    //         top: '',
-    //         bottom: '',
-    //         left: '',
-    //         right: ''
-    //     },
-    //     data: {
-    //         data: this.selectedDonor
-    // }
-    // };
-    @ViewChild(TemplateRef) template: TemplateRef<any>;
-    constructor(private donorsService: DonorsService, public dialog: MdDialog, private dialogService: DialogService) { }
+    donors: Donor[]=[];
+
+    @ViewChild(DonationComponent) donationComponent: DonationComponent;
+
+
+    constructor(private donorsService: DonorsService, public dialog: MdDialog, private dialogService: DialogService) {
+        this.selectedDonor = new Donor;
+     }
+   
     ngOnInit() {
         this.donorCtrl = new FormControl();
         this.donorsService.getDonors().then(x => {
@@ -46,34 +40,60 @@ export class DonorsComponent implements OnInit {
     }
 
     filter(val: any) {
-        return val && this.donors ? this.donors.filter(d => d.fullName.toLowerCase().indexOf(val.toLowerCase ? val.toLowerCase() : val.fullName.toLowerCase()) === 0)
+        return val && this.donors ? this.donors.filter(d => d.fullName.indexOf(val ? val : val.fullName) === 0)
             : this.donors;
     }
+     displayDonor(donor: Donor): string {
+        return donor ? donor.fullName : null;
+      }
     showEditDialog() {
         let disposable = this.dialogService.addDialog(EditDialogComponent, {
             donor: this.selectedDonor,
         }, { backdropColor: 'rgba(0, 0, 0, 0.5)' })
-            .subscribe((isConfirmed) => {
+            .subscribe((result) => {
                 //We get dialog result
-                if (isConfirmed) {
-                }
-                else {
+                if (result) {
+                    this.donorsService.updateDonorDetailes(result).then(x => {
+                        if (x){
+                            var fromdb = this.donors.find(x => x.id == result.id);
+                            fromdb.fullName = result.firstName+" "+result.lastName;
+                            this.displayDonor(fromdb);
+                            this.selectedDonor = result;
+                        } 
+                     });          
                 }
             });
     }
-    showAddDialog() {
+    showAddDialog() { 
         let disposable = this.dialogService.addDialog(AddDialogComponent
             , { backdropColor: 'rgba(0, 0, 0, 0.5)' })
-            .subscribe((isConfirmed) => {
+            .subscribe((result) => {
                 //We get dialog result
-                if (isConfirmed) {
+                if (result) {
+                    this.donorsService.createNewDonor(result).then(x =>{
+                        if(x)
+                            result.fullName = result.firstName+" "+result.lastName;
+                            result.id = x;
+                            this.donors.push(result);
+                            this.selectedDonor = result;
+                    })
                 }
                 else {
                 }
             });
     }
     deleteDonor() {
-        this.donorsService.deleteDonor(this.selectedDonor.id)
+        this.donorsService.deleteDonor(this.selectedDonor.id).then(x =>{
+            if(x)
+                this.donors.splice(this.donors.indexOf(this.selectedDonor) ,1)
+        })
+    }
+    saveDonations(){
+     this.donationComponent.save();
+
+    }
+    cancel(){
+     this.donationComponent.cancel();
     }
 }
 

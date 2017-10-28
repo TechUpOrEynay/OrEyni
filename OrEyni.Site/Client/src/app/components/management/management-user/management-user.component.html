@@ -1,21 +1,21 @@
-<table>
-    <thead>
-        <tr>
-            <th>שם משתמש</th>
-            <th>סיסמא</th>
-            <th>האם ממנהלי העמותה</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><input type="text" [(ngModel)]="user.userName" style="border:none"></td>
-            <td><input type="text" [(ngModel)]="user.password" style="border:none"></td>
-            <td>
-                <select [(ngModel)]="users.isAdmin" style="border:none">
-                         <option [ngValue]="true">כן</option>
-                         <option [ngValue]="false" >לא</option>
-                    </select>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<form #managementUserForm="ngForm" class="col-sm-3 col-sm-offset-4 divSchool" (ngSubmit)="managementUserForm.form.valid && save()">
+    <h3>הוסף משתמש חדש</h3>
+    <div class="form-group">
+        <label for="user.userName">שם משתמש</label> 
+        <input class="form-control" type="text" name="userName" required [(ngModel)]="user.userName" placeholder="שם משתמש">
+    </div>
+    <div class="form-group">
+        <label for="user.password">סיסמא</label>
+        <input class="form-control" type="text" name="password" required [(ngModel)]="user.password"  placeholder="סיסמא">
+    </div>
+    <div class="form-group">
+        <label for="school.name">האם ממנהלי העמותה</label>
+     <br>
+        <select class="form-control" [(ngModel)]="user.isAdmin" required name="isAdmin">
+            <option [ngValue]="true">כן</option>
+            <option [ngValue]="false" >לא</option>
+        </select>
+    </div>
+    <button [disabled]="!managementUserForm.form.valid" type="submit" class="btn btn-success" >שמירה</button>
+    <button (click)="cancel()"  class="btn btn-primary" >בטל</button>   
+</form>

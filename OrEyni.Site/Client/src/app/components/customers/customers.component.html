@@ -1,15 +1,14 @@
 <div class='container-fluid'>
 
-  <h1>לקוחות</h1>
 
   <div class='row'>
     <md-input-container>
       <input mdInput placeholder="בחר לקוח" [mdAutocomplete]="auto" [formControl]="customerCtrl" [(ngModel)]="selectedCustomer">
     </md-input-container>
 
-    <md-autocomplete #auto="mdAutocomplete" [displayWith]="displayCustomer">
-      <md-option *ngFor="let customer of filteredCustomers | async" [value]="customer">
-        {{customer.FullName}}
+    <md-autocomplete  #auto="mdAutocomplete" [displayWith]="displayCustomer">
+      <md-option  *ngFor="let customer of filteredCustomers | async" [value]="customer">
+        {{customer.fullName}}
       </md-option>
     </md-autocomplete>
 

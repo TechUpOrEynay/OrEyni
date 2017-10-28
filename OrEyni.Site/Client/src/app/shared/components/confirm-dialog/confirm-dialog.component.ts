@@ -8,7 +8,7 @@ import {MD_DIALOG_DATA} from '@angular/material';
 })
 export class ConfirmDialogComponent implements OnInit {
 
-  constructor(@Inject(MD_DIALOG_DATA) public data: any) { }
+  constructor( @Inject(MD_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
   }

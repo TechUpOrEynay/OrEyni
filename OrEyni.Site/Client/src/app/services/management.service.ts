@@ -5,7 +5,7 @@ import 'rxjs/Rx';
 
 import { ManagementSchool } from '../models/management.school.type'
 import { ManagementProblem } from '../models/management.problem.type'
-import { ManagementUsers } from '../models/management.users.type'
+import { User } from '../models/user.type'
 import { City } from '../models/city.type'
 @Injectable()
 export class ManagementService {
@@ -14,23 +14,23 @@ export class ManagementService {
     }
 
     getCities() {
-        return this.http.get('http://localhost:4222/api/Managment/GetCities')
+        return this.http.get('http://localhost:4222/api/Management/GetCities')
             .map(response => response.json() as City[])
             .toPromise();
     }
     addSchool(school: ManagementSchool) {
-        return this.http.get('http://localhost:4222/api/Managment/AddSchool')
+        return this.http.post('http://localhost:4222/api/Management/AddSchool',school)
             .map(response => response.json() as boolean)
-            .subscribe();
+            .toPromise();
     }
     addProblem(problem: ManagementProblem) {
-        return this.http.get('http://localhost:4222/api/Managment/AddProblem')
+        return this.http.post('http://localhost:4222/api/Management/AddProblem',problem)
             .map(response => response.json() as boolean)
-            .subscribe();
+            .toPromise();
     }
-    addUser(user: ManagementUsers) {
-        return this.http.get('http://localhost:4222/api/Managment/AddUser')
+    addUser(user: User) {
+        return this.http.post('http://localhost:4222/api/Management/AddUser',user)
             .map(response => response.json() as boolean)
-            .subscribe();
+            .toPromise();
     }
 }

@@ -1,5 +1,3 @@
 export class User {
-    userName: string;
-    password: string;
-    isAdmin: boolean;
+    constructor(public userName?:string, public password?: string, public isAdmin?: boolean){}
 }

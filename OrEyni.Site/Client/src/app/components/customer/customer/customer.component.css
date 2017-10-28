@@ -1,0 +1,11 @@
+.customerDiv{
+    position: absolute;
+       text-align: right;
+       top: 0%;
+   } 
+   .a{
+       padding-left: 5%
+   }
+   .toolbar{
+       width:20%
+   }    

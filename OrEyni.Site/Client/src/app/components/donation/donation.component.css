@@ -1,5 +1,15 @@
 .tab{text-align: center; }
-.thead{vertical-align: center;}
-td,th {
+input,select{
+  width:160px;
+  height: 26px;
+}
+.col-md-1{
   text-align: right;
+}
+.th{
+  text-align: right;
+}
+.select{
+text-align: top;
+font-size: 10px;
 }

@@ -7,8 +7,8 @@
     <ProjectGuid>{426E98E4-53E5-4545-9180-856196B73390}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ayellet.Bl</RootNamespace>
-    <AssemblyName>Ayellet.Bl</AssemblyName>
+    <RootNamespace>OrEnay.Bl</RootNamespace>
+    <AssemblyName>OrEnay.Bl</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,17 +41,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContactsBl.cs" />
+    <Compile Include="ManagementBl.cs" />
+    <Compile Include="DonorsBl.cs" />
     <Compile Include="ErrorManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CustomersBl.cs" />
+    <Compile Include="UsersBl.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OrEyni.Dal\OrEyni.Dal.csproj">
       <Project>{430f27ab-507e-49f3-943d-82d8147bba6e}</Project>
-      <Name>Ayellet.Dal</Name>
+      <Name>OrEyni.Dal</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OrEyni.Model\OrEyni.Model.csproj">
-      <Project>{dc471b31-16f8-450c-b72b-f1390fd6cf57}</Project>
-      <Name>Ayellet.Model</Name>
+    <ProjectReference Include="..\OrEyni.Entities\OrEyni.Entities.csproj">
+      <Project>{ac3a4fff-f5f0-42b4-b043-bb0be3edf192}</Project>
+      <Name>OrEyni.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

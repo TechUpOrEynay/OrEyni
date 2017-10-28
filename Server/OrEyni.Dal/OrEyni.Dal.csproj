@@ -7,8 +7,8 @@
     <ProjectGuid>{430F27AB-507E-49F3-943D-82D8147BBA6E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ayellet.Dal</RootNamespace>
-    <AssemblyName>Ayellet.Dal</AssemblyName>
+    <RootNamespace>OrEnay.Dal</RootNamespace>
+    <AssemblyName>OrEnay.Dal</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,14 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,13 +50,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContactsDal.cs" />
+    <Compile Include="ManagementDal.cs" />
+    <Compile Include="DonorDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CustomerDal.cs" />
+    <Compile Include="UsersDal.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OrEyni.Model\OrEyni.Model.csproj">
-      <Project>{dc471b31-16f8-450c-b72b-f1390fd6cf57}</Project>
-      <Name>Ayellet.Model</Name>
+    <ProjectReference Include="..\OrEyni.Entities\OrEyni.Entities.csproj">
+      <Project>{ac3a4fff-f5f0-42b4-b043-bb0be3edf192}</Project>
+      <Name>OrEyni.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

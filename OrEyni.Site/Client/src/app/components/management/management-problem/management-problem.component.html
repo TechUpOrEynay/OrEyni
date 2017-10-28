@@ -1,17 +1,14 @@
-<div class="divSchool">
-    <table>
-        <thead>
-            <tr>
-                <th>שם ליקוי</th>
-                <th>פרטים</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input type="text" [(ngModel)]="problem.name" style="border:none"></td>
-                <td><input type="text" [(ngModel)]="problem.details" style="border:none"></td>
-            </tr>
-        </tbody>
-    </table>
-    <button (click)="save()">שמור</button>
-</div>
+
+<form #managementProblemForm="ngForm" class="col-sm-3 col-sm-offset-4 divSchool" (ngSubmit)="managementProblemForm.form.valid && save()">
+    <h3>הוסף סוג ליקוי חדש</h3>
+    <div class="form-group">
+        <label for="problem.name">שם ליקוי</label> 
+        <input class="form-control" type="text" name="name" required [(ngModel)]="problem.name" placeholder="שם ליקוי">
+    </div>
+    <div class="form-group">
+        <label for="problem.details">פרטים</label>
+        <input class="form-control" type="text" name="details" required [(ngModel)]="problem.details"  placeholder="פרטים">
+    </div>
+    <button [disabled]="!managementProblemForm.form.valid" type="submit" class="btn btn-success" >שמירה</button>
+    <button (click)="cancel()"  class="btn btn-primary" >בטל</button>
+  </form>

@@ -25,15 +25,15 @@ export class CustomerComponent {
   @Input()
   set currentCustomer(currentCustomer: Customer) {
     this._currentCustomer = currentCustomer;
-    if (this._currentCustomer && this._currentCustomer.CustomerId) {
+    if (this._currentCustomer && this._currentCustomer.id) {
       this.selectedCustomer = this._currentCustomer;
     }
   }
 
 
 
-  tabChanged(event) {
-    this.customerDetailsComponent.saveWithAsk();
-  }
+  // tabChanged(event) {
+  //   this.customerDetailsComponent.saveWithAsk();
+  // }
 
 }

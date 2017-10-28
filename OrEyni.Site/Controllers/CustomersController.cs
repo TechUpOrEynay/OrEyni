@@ -4,60 +4,87 @@ using System.Linq;
 using System.Threading.Tasks;
 using OrEyni.Bl;
 using System.Collections;
-using OrEyni.Model;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-
+using OrEyni.Entities;
 
 namespace OrEyni.Site.Controllers
 {
-    [RoutePrefix("api/Customers")]
-    public class CustomersController : BaseController
+    [RoutePrefix("api/customers")]
+    public class CustomersController : ApiController
     {
-       
+        public CustomersBl _customersBl;
+
+
         public CustomersController()
         {
+            _customersBl = new CustomersBl();
+        }
+
+        [Route("getcustomers")]
+        public IList<Child> getcustomers()
+        {
+
+            var fromDB = _customersBl.getCustomers();
+            return fromDB;
+
         }
         [HttpGet]
-        public HttpResponseMessage Get()
+        [Route("getCustomerById/{id}")]
+        public Child getCustomerById(int id)
         {
-            return base.RunCodeSafly<IList<Customer>>("GetCustomers", () =>
-             {
-                 return new List<Customer>()
-                 {
-                     new Customer(){CustomerId=123,FullName="אהרון הכהן"},
-                     new Customer(){CustomerId=124,FullName="משה רבינו"},
-                     new Customer(){CustomerId=125,FullName="דוד המלך"}
-                 };
-             });
+            return _customersBl.getCustomerById(id);
+        }
+        
+        [HttpGet]
+        [Route("getCustomerProcess/{id}")]
+        public IList<Process> getCustomerProcess(int id)
+        {
+            return _customersBl.getCustomerProcess(id);
+        }
+        [HttpGet]
+        [Route("getProcessTypeTable")]
+        public IList<ProcessType> getProcessTypeTable()
+        {
+            return _customersBl.getProcessTypeTable();
         }
 
-        [Route("GetCustomerDetails/{id}")]
-        public HttpResponseMessage GetCustomerDetails(int id)
+        [HttpGet]
+        [Route("getParentsNameByFamilyId/{id}")]
+        public IList<Parent> getParentsNameByFamilyId(int id)
         {
-            return base.RunCodeSafly<CustomerDetials>("GetCustomerDetails", () =>
-            {
-                return id == 123 ? new CustomerDetials() { CustomerId = 123, FirstName = "אהרון", LastName = "הכהן" }
-                : id == 124 ? new CustomerDetials() { CustomerId = 124, FirstName = "משה", LastName = "רבינו" }
-                : new CustomerDetials() { CustomerId = 125, FirstName = "דוד", LastName = "המלך" };
-            });
+            return _customersBl.getParentsNameByFamilyId(id);
         }
-    }
-
-    public class Customer
-    {
-        public int CustomerId { get; set; }
-        public string FullName { get; set; }
-    }
-
-    public class CustomerDetials
-    {
-        public int CustomerId { get; set; }
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
+        [HttpPost]
+        [Route("addProcess")]
+        public int addProcess(Process process)
+        {
+            return _customersBl.addProcess(process);
+        }
 
 
     }
 }
+
+
+//[Route("getcustomerdetails/{id}")]
+//public CustomerDetials getcustomerdetails(int id)
+//{
+//    return id == 123 ? new CustomerDetials() { Id = 123, FirstName = "אהרון"/*, LastName = "הכהן"*/ }
+//    : id == 124 ? new CustomerDetials() { Id = 124, FirstName = "משה"/*, LastName = "רבינו" */}
+//    : new CustomerDetials() { Id = 125, FirstName = "דוד"/*, LastName = "המלך"*/ };
+//}
+//[HttpGet]
+//public HttpResponseMessage Get()
+//{
+
+//  
+//return new List<Customer>()
+//         {
+//        new Customer() { Id = 123,FirstName = "אהרון הכהן"},
+//        new Customer() { Id = 124,FirstName = "משה רבינו"},
+//        new Customer() { Id = 125,FirstName = "דוד המלך"}
+//         };
+//}

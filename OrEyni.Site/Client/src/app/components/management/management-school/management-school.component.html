@@ -1,21 +1,16 @@
-<div class="divSchool">
-    <table>
-        <thead>
-            <tr>
-                <th>שם מוסד</th>
-                <th>עיר</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input type="text" [(ngModel)]="school.name"></td>
-                <td>
-                    <select [(ngModel)]="school.cityId" style="border:none">
-                         <option *ngFor="let item of cities" [ngValue]="item.id">{{item.name}}</option>
-                    </select>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <button (click)="save()">שמור</button>
-</div>
+  <form #managementSchoolForm="ngForm" class="col-sm-3 col-sm-offset-4 divSchool" (ngSubmit)="managementSchoolForm.form.valid && save()">
+    <h3>הוסף מוסד חדש:</h3>
+    <div class="form-group">
+        <label for="school.name">שם מוסד</label> 
+        <input class="form-control" type="text" name="name" [(ngModel)]="school.name" required placeholder="שם מוסד">
+    </div>
+    <div class="form-group">
+        <label for="school.name">עיר</label>
+     <br>
+        <select class="form-control" [(ngModel)]="school.cityId" required name="cityId" >
+            <option *ngFor="let item of cities" [ngValue]="item">{{item.name}}</option>
+        </select>
+    </div>
+    <button [disabled]="!managementSchoolForm.form.valid" type="submit" class="btn btn-success" >שמירה</button>
+    <button (click)="cancel()"  class="btn btn-primary" >בטל</button>  
+</form>

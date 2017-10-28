@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c1e147f6fc4e418d9e775077b5232671" Name="Diagram1">
+        <EntityTypeShape EntityType="OrEnayModel.Activity" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.ActivityImage" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.ActivityOption" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.ActivityRegister" Width="1.5" PointX="8.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.Child" Width="1.5" PointX="8.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.City" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.Donation" Width="1.5" PointX="13" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.Donor" Width="1.5" PointX="10.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.DonorContact" Width="1.5" PointX="13" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.Family" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.FamilyChild" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.HMO" Width="1.5" PointX="6" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.MaritalStatu" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.Parent" Width="1.5" PointX="5.25" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.Problem" Width="1.5" PointX="6" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.Process" Width="1.5" PointX="10.5" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.ProcessType" Width="1.5" PointX="8.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.School" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrEnayModel.User" Width="1.5" PointX="10.75" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="OrEnayModel.FK__Activity__City__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK__ActivityI__Activ__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK__ActivityR__Activ__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK_ActivityOption_Activity" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK__ActivityR__Child__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK__Child__FamilyChi__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK__Child__HMOID__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK__Child__ProblemID__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK__Child__SchoolID__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK_Process_Child" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK__Family__CityID__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK__School__CityID__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK__Donation__DonorI__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK_Donation_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK__DonorCont__Donor__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK__FamilyChi__Famil__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK__Parent__FamilyID__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK_Process_Parent" ManuallyRouted="false" />
+        <AssociationConnector Association="OrEnayModel.FK_Process_ProcessType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

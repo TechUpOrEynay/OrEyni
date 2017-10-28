@@ -5,10 +5,41 @@
     <router-outlet></router-outlet>
     <button>דוחות</button>
 </div> -->
-<div class="managementDiv">
-    <ul class="nav navbar-nav">
-        <li routerLinkActive="active"><a [routerLink]="['/school']">school</a></li>
-        <li routerLinkActive="active"><a [routerLink]="['/problem']">problem</a></li>
-    </ul>
-    <router-outlet></router-outlet>
-    <div>
+<!-- <div class="managementDiv"> -->
+    <!-- <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a [routerLink]="['/school']">הוסף מוסד לימודים</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/problem']">הוסף סוג ליקוי</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/user']">הוסף משתמש</a></li>
+    </ul> -->
+
+    <!-- <div class='managementDiv'>
+        <md-toolbar>
+            
+            <a [routerLink]="['/managementOrEnay/school']">
+                <span class='glyphicon'></span> הוסף מוסד לימודים
+            </a>
+            <a [routerLink]="['/managementOrEnay/problem']">
+                <span class='glyphicon'></span>הוסף סוג ליקוי
+            </a>
+            <a [routerLink]="['/managementOrEnay/user']">
+                <span class='glyphicon'></span>הוסף משתמש
+            </a>
+           
+            </md-toolbar>
+        <div class='row'>
+    
+            <div class='col-sm-3 body-content'>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div> -->
+    <nav class="navbar-brand nav navbar-nav navbar-right" dir="rtl" [ngClass] = "'child-menu'">
+        <ul class="navbar-nav" style="list-style: none; ">
+            <li class="nav-item" dir="rtl"><a class="nav-link" [routerLink]="['/managementOrEnay/school']"><span class='glyphicon'></span>הוסף מוסד לימודים</a></li>
+            <li class="nav-item" dir="rtl"><a class="nav-link" [routerLink]="['/managementOrEnay/problem']"><span class='glyphicon'></span>הוסף סוג ליקוי</a></li>
+            <li class="nav-item" dir="rtl"><a class="nav-link" [routerLink]="['/managementOrEnay/user']"><span class='glyphicon'></span>הוסף משתמש</a></li>
+        </ul>  
+    </nav>  
+    <div class="row" [ngClass] = "'child-container'">	
+        <router-outlet></router-outlet>	
+    </div>

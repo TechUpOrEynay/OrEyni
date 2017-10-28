@@ -39,23 +39,20 @@ export interface ConfirmModel {
   templateUrl: 'donors.component.editDialog.html',
   styleUrls: ['donors.component.editDialog.css'],
 })
-export class EditDialogComponent extends DialogComponent<ConfirmModel, boolean> implements ConfirmModel {
+export class EditDialogComponent extends DialogComponent<ConfirmModel, Donor> implements ConfirmModel {
   donor: Donor;
   constructor(dialogService: DialogService, private donorService: DonorsService, ) {
     super(dialogService);
   }
   ngOnInit() {
-    this.donorService.getDonorById(this.donor.id).then(x => { this.donor = x });
+    // if(this.donor.id)
+    // this.donorService.getDonorById(this.donor.id).then(x => { this.donor = x });
   }
   confirm() {
     // on click on confirm button we set dialog result as true,
     // ten we can get dialog result from caller code
     this.close();
-    this.donorService.updateDonorDetailes(this.donor).subscribe(x => {
-      if (x)
-        this.result = true;
-      this.result = false;
-    });
+        this.result = this.donor;
   }
   cancel() {
     this.close();

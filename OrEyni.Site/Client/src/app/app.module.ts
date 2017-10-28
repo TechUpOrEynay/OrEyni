@@ -4,6 +4,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
+// import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material';
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
@@ -15,6 +16,7 @@ import { ContactsService } from './services/contacts.service';
 import { CustomersService } from './services/customers.service';
 import { DonorsService } from './services/donors.service';
 import { ManagementService } from './services/management.service';
+import { UserService } from './services/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MdAutocompleteModule,
@@ -61,18 +63,20 @@ import { EditDialogComponent } from './components/dialogs/editDialog/donors.comp
 import { AddDialogComponent } from './components/dialogs/addDialog/donors.component.addDialog';
 import { CustomerProcessComponent } from './components/customer/customer-process/customer-process.component';
 import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
+import { SuccessDialogComponent } from './shared/components/success-dialog/success-dialog.component';
 import { ManagementComponent } from './components/management/management.component'
 import { ManagementUserComponent } from './components/management/management-user/management-user.component';
 //import { ManagementProblemComponent } from './components/management/management-problem/management-problem.component';
 import { ManagementSchoolComponent } from './components/management/management-school/management-school.component';
 import { ManagementProblemComponent } from './components/management/management-problem/management-problem.component';
-import { AppStartComponent } from './components/app/appStart/appStart.component';
+//import { AppForUserComponent } from './components/app/appForUser/AppForUser.component';
 import { LoginComponent } from './components/dialogs/loginDialog/login.component';
 import { NavmenuStartComponent } from './components/navmenu/navmenuStart/navmenuStart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    //AppForUserComponent,
     NavMenuComponent,
     HomeComponent,
     HelloWorldComponent,
@@ -85,13 +89,13 @@ import { NavmenuStartComponent } from './components/navmenu/navmenuStart/navmenu
     CustomerActivitiesComponent,
     CustomerProcessComponent,
     ConfirmDialogComponent,
+    SuccessDialogComponent,
     DonorsComponent,
     DonationComponent,
     ManagementComponent,
     ManagementUserComponent,
     ManagementSchoolComponent,
     ManagementProblemComponent,
-    AppStartComponent,
     EditDialogComponent,
     AddDialogComponent,
     LoginComponent,
@@ -140,8 +144,8 @@ import { NavmenuStartComponent } from './components/navmenu/navmenuStart/navmenu
     TabsModule,
     ReactiveFormsModule
   ],
-  providers: [ContactsService, CustomersService, DonorsService, ManagementService],
-  entryComponents: [ConfirmDialogComponent, EditDialogComponent, AddDialogComponent], //components that dynamic created  in code
+  providers: [ContactsService, CustomersService, DonorsService, ManagementService, UserService],
+  entryComponents: [ConfirmDialogComponent, SuccessDialogComponent, EditDialogComponent, AddDialogComponent, LoginComponent], //components that dynamic created  in code
   bootstrap: [AppComponent]
 })
 export class AppModule { }

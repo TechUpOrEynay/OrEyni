@@ -1,22 +1,33 @@
-<form #customerDetailsForm="ngForm" *ngIf="customerDetails" (ngSubmit)="customerDetailsForm.form.valid && save()" >
+
+
+<form class="form" #customerDetailsForm="ngForm" *ngIf="_currentCustomer" (ngSubmit)="customerDetailsForm.form.valid && save()" >
   <div class="form-group">
     <label for="firstname">שם פרטי:</label>
     <md-input-container>
-      <input #fn class="form-control" id="firstname" name="firstname" required mdInput placeholder="שם פרטי" [(ngModel)]="customerDetails.FirstName"
-        (change)="isDirty=true">
+      <input #fn  id="firstName" name="firstName" required mdInput placeholder="שם פרטי" [(ngModel)]="_currentCustomer.firstName">
     </md-input-container>
+    <md-input-container>
+        <input #fn  id="lastName" name="lastName" required mdInput placeholder="שם משפחה" [(ngModel)]="_currentCustomer.lastName">
+      </md-input-container>
+    <md-input-container>
+        <input #fn  id="tz" name="tz" required mdInput placeholder="תעודת זהות" [(ngModel)]="_currentCustomer.tz">
+    </md-input-container>
+    <md-input-container>
+        <input #fn  id="notes" name="notes" required mdInput placeholder="הערות" [(ngModel)]="_currentCustomer.notes">
+    </md-input-container>      
    <!-- <br>TODO: remove this: {{fn.className}}-->
   </div>
 
-  <div class="form-group">
-    <label for="lastname">שם משפחה:</label>
+  <!-- <div class="form-group">
+    <label for="fullname">שם משפחה:</label>
     <md-input-container>
-      <input class="form-control" id="lastname" name="lastname" required mdInput placeholder="שם משפחה" [(ngModel)]="customerDetails.LastName"
-        (change)="isDirty=true">
+      <input class="form-control" id="fullname" name="fullname" required mdInput placeholder="שם משפחה" [(ngModel)]="_currentCustomer.fullName"
+      >    
     </md-input-container>
     
+  </div> -->
+  <div class="col-md-6">
+  <button [disabled]="!customerDetailsForm.form.valid" type="submit" class="btn btn-success" >שמירה</button>
   </div>
-
-  <button [disabled]="!customerDetailsForm.form.valid || !customerDetailsForm.form.dirty" type="submit" class="btn btn-success" >שמירה</button>
-
-</form>
+</form> 
+ <!-- (change)="Dirty=true"> -->

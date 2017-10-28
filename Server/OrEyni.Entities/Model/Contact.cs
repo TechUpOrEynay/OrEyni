@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OrEyni.Entities.Model
 {
-    public class Contact
+    public class aaaa
     {
         public int ContactId { get; set; }
         public string Name { get; set; }

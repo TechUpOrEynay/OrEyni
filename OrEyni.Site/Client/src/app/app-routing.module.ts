@@ -11,10 +11,14 @@ import { DonationComponent } from './components/donation/donation.component';
 import { DonorsComponent } from './components/donors/donors.component';
 import { ManagementComponent } from './components/management/management.component';
 import { CustomerProcessComponent } from './components/customer/customer-process/customer-process.component';
+import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
 import { ManagementUserComponent } from './components/management/management-user/management-user.component';
 import { ManagementProblemComponent } from './components/management/management-problem/management-problem.component';
 import { ManagementSchoolComponent } from './components/management/management-school/management-school.component';
 import { AppComponent } from './components/app/app.component'
+//import { AppForUserComponent } from './components/app/appForUser/appForUser.component'
+import { NavMenuComponent } from './components/navmenu/navmenu.component';
+import { NavmenuStartComponent } from './components/navmenu/navmenuStart/navmenuStart.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -23,20 +27,28 @@ const routes: Routes = [
   //{ path: 'management', component: ManagementComponent },
   { path: 'weather', component: WeatherComponent },
   { path: 'fetch-data', component: FetchDataComponent },
-  { path: 'customers', component: CustomersComponent },
+  { path: 'customers', component: CustomersComponent ,
+  children: [
+    { path: 'details/:currentCustomer', component: CustomerDetailsComponent },
+    { path: 'process/:currentCustomer', component: CustomerProcessComponent },
+  ]},
   { path: 'donors', component: DonorsComponent },
-  { path: 'process', component: CustomerProcessComponent },
-  { path: 'managementOrEnay', component: ManagementComponent },
-  { path: 'problem', component: ManagementProblemComponent },
-  { path: 'user', component: ManagementUserComponent },
-  { path: 'school', component: ManagementSchoolComponent },
-  { path: 'app', component: AppComponent },
+  { path: 'managementOrEnay', component: ManagementComponent ,
+  children: [
+    { path: 'problem', component: ManagementProblemComponent },
+    { path: 'user', component: ManagementUserComponent },
+    { path: 'school', component: ManagementSchoolComponent },
+  ]
+},
+  { path: 'app-root', component: AppComponent },
+  { path: 'nav-menu', component: NavMenuComponent },
+  { path: 'nav-menu-start', component: NavmenuStartComponent },
   { path: '**', redirectTo: '/' },
 ];
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

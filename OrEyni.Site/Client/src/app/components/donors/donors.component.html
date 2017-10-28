@@ -1,14 +1,16 @@
-<div class="row">
+<div class="row container-fluid">
     <div class="col-md-9">
-        <donation [currentDonor]="selectedDonor"> </donation>
+        <donation *ngIf="selectedDonor" [currentDonor]="selectedDonor"> </donation>
     </div>
     <div class="col-md-3">
-        <md-input-container class="autocomplete">
-            <input mdInput placeholder="בחר תורם" [mdAutocomplete]="auto" [formControl]="donorCtrl" [(ngModel)]="selectedDonor">
+        <md-input-container >
+                <!-- class="autocomplete" -->
+            <input mdInput placeholder="בחר תורם"  [mdAutocomplete]="auto" [formControl]="donorCtrl" [(ngModel)]="selectedDonor">
         </md-input-container>
-
-        <md-autocomplete #auto="mdAutocomplete" [displayWith]="displayDonor">
-            <md-option *ngFor="let d of donors | async" [value]="d">
+       
+     
+        <md-autocomplete #auto="mdAutocomplete"    [displayWith]="displayDonor">
+            <md-option *ngFor="let d of filteredDonors | async" [value]="d">
                 {{d.fullName}}
             </md-option>
         </md-autocomplete>
@@ -16,16 +18,20 @@
                     <!-- <div class="container">
                         <button class="btn btn-default" (click)=showConfirm()>Show confirm</button>
                     </div> -->
-        <button md-button class="btn btn-primary" (click)="showEditDialog()">ערוך</button>
-        <button md-button class="btn btn-primary" (click)="deleteDonor()">מחק</button>
-        <button md-button class="btn btn-primary" (click)="showAddDialog()">הוסף</button>
+        <button *ngIf="selectedDonor" md-button class="btn btn-primary" (click)="showEditDialog()">ערוך</button>
+        <button *ngIf="selectedDonor" md-button class="btn btn-primary" (click)="deleteDonor()">מחק</button>
+        <button *ngIf="selectedDonor" md-button class="btn btn-primary" (click)="showAddDialog()">הוסף</button>
+        <!-- <input type="text" *ngIf="selectedDonor" [(ngModel)]="donor.fullName">  -->
         <!--https://github.com/ng2-ui/popup-->
        </span>
 
     </div>
+
 </div>
-<div class="col-md-4">
-    <button class="btn btn-primary" (click)="saveDonations">שמור</button></div>
+<div class="col-md-3">
+    <button *ngIf="selectedDonor"  (click)="saveDonations()" class="btn btn-success" >שמור</button>
+    <button *ngIf="selectedDonor" (click)="cancel()"  class="btn btn-primary" >בטל</button> 
+</div>
 <!--<select [(ngModel)]="selectedValue">
        <option *ngFor="let d of donors" [ngValue]="d">{{d.name}}</option>
     </select>-->

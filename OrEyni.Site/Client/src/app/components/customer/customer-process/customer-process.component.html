@@ -1,41 +1,57 @@
-<div class="div1">
-    <table class="table">
+<div *ngIf="_currentCustomer" class="div1">
+    <!-- <h3>{{d | date:'dd/MM/yyyy'}} </h3> -->
+    <table [hidden]="!_currentCustomer" class="table">
+      <!-- <form #customerProcessForm="ngForm" *ngIf="processes" (ngSubmit)="customerProcessForm.form.valid && save()"> -->
         <thead class="thead">
             <tr>
                 <th>תאריך</th>
                 <th>שם מייעץ</th>
-                <th>פירוט</th>
+                <th>פירוט </th>
                 <th>שם פונה</th>
                 <th>סוג ייעוץ</th>
             </tr>
         </thead>
-        <tbody class="tbody">
+        <tbody *ngIf="processes" class="tbody">
             <tr *ngFor="let p of processes">
-                <td>{{p.dateProcess}}</td>
+                <td value="01/01/2011">{{p.date | date:'dd/MM/yyyy'}}</td>
                 <td>{{p.advisingName}}</td>
-                <td>{{p.detail}}</td>
-                <td>{{p.parentsName}}</td>
-                <td>{{p.processType}}</td>
+                <td>{{p.description}}</td>
+                <td>{{p.parentName}}</td>
+                <td>{{p.processTypeName}}</td>
             </tr>
             <tr>
                 <td>
-                    <input placeholder="תאריך" type="date" date="dd-MM-yyyy" [(ngModel)]="p.dateProcess" style="border:none">
+                    <!-- <md-input-container> -->
+                    <!-- <p> {{newProcess.date | date:'dd/MM/yyyy'}}</p> -->
+                    <input class="form-control"  placeholder="תאריך" type="date" name="newProcess.date" (ngModelChange)="newProcess.date = $event"  [ngModel]="newProcess.date | date:'yyyy-MM-dd'" style="border:none">
+                    <!-- </md-input-container> -->
                 </td>
                 <td>
-                    <input placeholder="שם מייעץ" type="text" [(ngModel)]="p.advisingName" style="border:none">
+                    <!-- <md-input-container> -->
+                    <input class="form-control"  placeholder="שם מייעץ" type="text"  [(ngModel)]="newProcess.advisingName" >
+                    <!-- </md-input-container> -->
                 </td>
                 <td>
-                    <input placeholder="פירוט" type="text" [(ngModel)]="p.detail" style="border:none">
+                    <!-- <md-input-container> -->
+                    <input class="form-control"  placeholder="פירוט" type="text" [(ngModel)]="newProcess.description" >
+                    <!-- </md-input-container> -->
                 </td>
                 <td>
-                    <input placeholder="שם פונה" type="text" [(ngModel)]="p.parentsName" style="border:none">
+                    <select class="form-control" *ngIf="parents" placeholder="שם פונה" [(ngModel)]="newProcess.parentID" >
+                        <option  *ngFor="let item of parents"  [ngValue]="item.id">{{item.firstName}}</option>
+                    </select>
                 </td>
                 <td>
-                    <select placeholder="סןג ייעוץ" [(ngModel)]="p.processType" style="border:none">
-                        <option  *ngFor="let item of processTypeTable"  [ngValue]="item.id">item.Description</option>
+                    <select class="form-control" *ngIf="processTypeTable" placeholder="סןג ייעוץ" [(ngModel)]="newProcess.processTypeID" >
+                        <option  *ngFor="let item of processTypeTable"  [ngValue]="item.id">{{item.description}}</option>
                     </select>
                 </td>
             </tr>
-        </tbody>
-    </table>
+        </tbody>  
+      </table> 
+
+      <div class="col-md-6">
+            <button class="btn btn-success" (click)="save()"  >שמור</button>
+            <button class="btn btn-primary" (click)="cancel()">בטל</button> 
+        </div>
 </div>

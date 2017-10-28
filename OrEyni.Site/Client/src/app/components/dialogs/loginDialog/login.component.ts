@@ -7,19 +7,20 @@ import { User } from '../../../models/user.type'
     templateUrl: 'login.component.html',
     styleUrls: ['login.component.css'],
 })
-export class LoginComponent extends DialogComponent<null, boolean> {
-    user: User;
+export class LoginComponent extends DialogComponent<null, User> {
+    user: User ;
     constructor(dialogService: DialogService, private userService: UserService, ) {
         super(dialogService);
+        this.user = new User();
     }
     confirm() {
         // on click on confirm button we set dialog result as true,
         // ten we can get dialog result from caller code
-        this.close();
+        
         this.userService.login(this.user).then(x => {
             if (x)
-                this.result = true;
-            this.result = false;
+                return this.result = this.user;
         });
+        this.close();
     }
 }

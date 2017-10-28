@@ -9,8 +9,9 @@ export class UserService {
     constructor(private http: Http) {
     }
     login(user: User) {
-        return this.http.get('http://localhost:4222/api/User/Login')
+        return this.http.get(`http://localhost:4222/api/Users/Login?userName=${user.userName}&password=${user.password}`)
+        //.toPromise().then(x =>{return x.json()});
             .map(response => response.json() as boolean[])
-            .toPromise();
+           .toPromise();
     }
 }

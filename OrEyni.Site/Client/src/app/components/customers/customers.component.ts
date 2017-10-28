@@ -17,28 +17,26 @@ private  customers: Customer[] = [];
     customerCtrl: FormControl;
     filteredCustomers: any;
     public  selectedCustomer: Customer;
+    constructor(private customersService: CustomersService) {}
 
-    constructor(private customersService: CustomersService) {
-
-    this.customerCtrl = new FormControl();
+    ngOnInit(){  
+     this.customerCtrl = new FormControl();
      this.customersService.getCustomers().then(customers => {
+       if(customers)
       this.customers = customers;
+       this.customers.forEach(y => { y.fullName = y.firstName + " " + y.lastName });
        this.filteredCustomers = this.customerCtrl.valueChanges
         .startWith(null)
         .map(name => this.filter(name));
     });
-
-   }
-
+  }
     filter(val: any) {
-    return val && this.customers ? this.customers.filter(c => c.FullName.toLowerCase().indexOf(val.toLowerCase?val.toLowerCase():val.FullName.toLowerCase()) === 0)
+    return val && this.customers ? this.customers.filter(c => c.fullName.indexOf(val?val:val.fullName) === 0)
                : this.customers;
     }
     displayCustomer(customer: Customer): string {
-      return customer ? customer.FullName : null;
+      return customer ? customer.fullName : null;
     }
-    ngOnInit(){ 
-   }
   }
 
 

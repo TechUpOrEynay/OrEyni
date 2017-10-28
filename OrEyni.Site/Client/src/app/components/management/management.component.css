@@ -3,3 +3,21 @@
     text-align: right;
     top: 0%;
 } 
+.md-toolbar{
+justify-content: space-between;
+
+width: 100%;
+}
+
+.ul{
+    list-style: none;
+}
+.nav-link{
+
+    padding-right: 20px;
+
+    /* border-style: color; */
+}
+.row{
+    margin-top: 5%;
+}

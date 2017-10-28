@@ -1,17 +1,54 @@
-<!--<h1>
-  {{selectedCustomer?.FullName}}
-</h1>-->
-<!-- <md-tab-group (selectChange)="tabChanged($event)">
-  <md-tab label="פרטים">
+
+<!-- <md-tab-group > -->
+  <!-- <md-tab label="פרטים">
     <h1>פרטים</h1>
     <app-customer-details [currentCustomer]="selectedCustomer"></app-customer-details>
-  </md-tab>
-  <md-tab label="פעילויות">
+  </md-tab> -->
+  <!-- <md-tab label="פעילויות">
     <h1>פעילויות</h1>
     <app-customer-activities [currentCustomer]="selectedCustomer"> </app-customer-activities>
+  </md-tab> -->
+  <!-- <md-tab label="תהליך">
+    <app-customer-process [currentCustomer]="selectedCustomer"> </app-customer-process>
   </md-tab>
 </md-tab-group> -->
-<tabset (onSelect)="tabChanged($event)">
+
+<md-toolbar class="toolbar">        
+    <a class="a" *ngIf="selectedCustomer" [routerLink]="['/customers/details',selectedCustomer.id]">
+        <span class='glyphicon'></span>פרטים 
+    </a>
+    <a class="a" *ngIf="selectedCustomer" [routerLink]="['/customers/process',selectedCustomer.id]">
+        <span class='glyphicon'></span>תהליך
+    </a>
+</md-toolbar>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <tabset (onSelect)="tabChanged($event)">
   <tab title="פרטים" label="פרטים">
     <label>פרטים</label>
     <app-customer-details [currentCustomer]="selectedCustomer"></app-customer-details>
@@ -24,11 +61,11 @@
     <label>תהליך</label>
     <app-customer-process [currentCustomer]="selectedCustomer"> </app-customer-process> -->
     <!-- <a [routerLink]="['/process']">תהליך</a> -->
-  </tab>
+  <!-- </tab>
   <tab title="משפחה">
     <label>משפחה</label>
   </tab>
-</tabset>
+</tabset>  -->
 
 <!-- <nav class="navbar navbar-default" style="direction:rtl">
   <div class="container">
