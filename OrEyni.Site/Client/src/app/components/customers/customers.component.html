@@ -2,16 +2,17 @@
 
 
   <div class='row'>
-    <md-input-container>
-      <input mdInput placeholder="בחר לקוח" [mdAutocomplete]="auto" [formControl]="customerCtrl" [(ngModel)]="selectedCustomer">
-    </md-input-container>
+    <form class="form">
+      <md-input-container>
+        <input mdInput placeholder="בחר לקוח" [mdAutocomplete]="auto" [formControl]="customerCtrl" [(ngModel)]="selectedCustomer">
+      </md-input-container>
 
-    <md-autocomplete  #auto="mdAutocomplete" [displayWith]="displayCustomer">
-      <md-option  *ngFor="let customer of filteredCustomers | async" [value]="customer">
-        {{customer.fullName}}
-      </md-option>
-    </md-autocomplete>
-
+      <md-autocomplete #auto="mdAutocomplete" [displayWith]="displayCustomer">
+        <md-option *ngFor="let customer of filteredCustomers | async" [value]="customer">
+          {{customer.fullName}}
+        </md-option>
+      </md-autocomplete>
+    </form>
   </div>
 
 
